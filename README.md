@@ -4,6 +4,19 @@ Notebook where I train two models on breast ultrasound images with PyTorch: a Re
 
 Training is on BUSI, after removing its duplicate images (155 of the 780 are copies, which inflates the scores if they end up in both train and test). Then I test on the BUSI test split and on BUS-BRA, a dataset from another hospital that the models never see during training. There's also Grad-CAM to check where the classifier is looking.
 
+## Results
+
+On the BUSI test split (114 images) the classifier gets 88.6% accuracy and 0.98 ROC-AUC, and the U-Net gets a mean Dice of 0.81 on the lesions. On BUS-BRA it's much worse:
+
+| lesions only | BUSI test | BUS-BRA |
+| --- | ---: | ---: |
+| ROC-AUC malignant vs benign | 0.970 | 0.706 |
+| malignant sensitivity | 0.806 | 0.473 |
+| benign specificity | 0.938 | 0.811 |
+| mean Dice | 0.806 | 0.699 |
+
+The biggest drop is on finding the malignant lesions. The notebook has the confidence intervals and the per-class numbers.
+
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Magikdidi24/breast-ultrasound-cnn/blob/main/breast_cancer_detection_segmentation.ipynb)
 
 ## Running it
@@ -24,4 +37,4 @@ If you already have the datasets, set `BUSI_DIR` / `BUSBRA_DIR` in the config ce
 
 They're not included in the repo.
 
-Not a medical tool, just a research / learning project.
+Not a medical tool, just a learning project.
