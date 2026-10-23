@@ -2,7 +2,7 @@
 
 Notebook where I train two models on breast ultrasound images with PyTorch: a ResNet-34 that classifies the image (normal / benign / malignant) and a U-Net that segments the lesion.
 
-Training is on BUSI, after removing its duplicate images (155 of the 780 are copies, which inflates the scores if they end up in both train and test). Then I test on the BUSI test split and on BUS-BRA, a dataset from another hospital that the models never see during training. There's also Grad-CAM to check where the classifier is looking.
+Training is on BUSI. Of its 780 images, 155 are copies, which inflates the scores if they end up in both train and test. My check only catches 18 pairs and drops 20 images (it misses cropped or zoomed copies). Then I test on the BUSI test split and on BUS-BRA, a dataset from another hospital that the models never see during training. There's also Grad-CAM to check where the classifier is looking.
 
 ## Results
 
