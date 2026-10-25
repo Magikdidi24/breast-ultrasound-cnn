@@ -2,6 +2,10 @@
 
 Notebook where I train two models on breast ultrasound images with PyTorch: a ResNet-34 that classifies the image (normal / benign / malignant) and a U-Net that segments the lesion. There's also Grad-CAM to check where the classifier is looking.
 
+![A normal, a benign and a malignant ultrasound image, each with the classifier's Grad-CAM and the lesion found by the U-Net](assets/example.png)
+
+One random image per class from the curated BUSI, each run through the two models of the fold where it was a test image. Left: the image, with the real lesion in green. Middle: the classifier's probabilities and its Grad-CAM. Right: the lesion the U-Net finds, in red. On the normal one the U-Net still sees a lesion, which happens on 21 of the 64 normal images.
+
 This is v2. v1 trained on the original BUSI. Of its 780 images, 155 are copies, and my own check only caught 18 pairs, so its test scores were probably too optimistic. It also dropped hard on BUS-BRA, a dataset from another hospital. What v2 changes:
 
 - Data: the Curated BUSI from Aumente-Maestro et al. (450 images), where the authors removed the duplicates and the problematic cases with an automatic search plus a manual review. My duplicate check still runs as a sanity check and finds nothing above its threshold.
